@@ -7,8 +7,7 @@ COPY . /app/
 RUN npm install -g editorconfig
 
 RUN yarn upgrade
-RUN yarn build
 
-EXPOSE 9090
+EXPOSE 8080
 
-ENTRYPOINT VUE_APP_API_URL=$API_URL ./node_modules/.bin/vue-cli-service serve --port 9090 --mode production
+ENTRYPOINT VUE_APP_API_URL=$API_URL yarn serve
