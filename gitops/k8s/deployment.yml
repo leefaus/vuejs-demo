@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: conduit-ui
+  name: conduit-ui
+spec:
+  replicas: ${#toInt( parameters.replicas )}
+  selector:
+    matchLabels:
+      app: conduit-ui
+  template:
+    metadata:
+      labels:
+        app: conduit-ui
+    spec:
+      containers:
+        - image: "leefaus/vuejs-demo"
+          name: conduit-ui
+          ports:
+            - containerPort: ${#toInt(parameters.containerPort)}
+          env:
+            - name: API_URL
+              value: "http://a4abc87b85da511eab2c30a08148cbfd-1658932707.us-west-2.elb.amazonaws.com/"
