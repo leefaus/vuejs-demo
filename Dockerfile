@@ -10,4 +10,4 @@ RUN yarn upgrade
 
 EXPOSE 8080
 
-ENTRYPOINT VUE_APP_API_URL=$API_URL yarn serve
+ENTRYPOINT VUE_APP_API_URL=$API_URL yarn serve --inline --hot --host 0.0.0.0 --public
