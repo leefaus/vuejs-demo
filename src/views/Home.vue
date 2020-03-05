@@ -2,8 +2,8 @@
   <div class="home-page">
     <div class="banner">
       <div class="container">
-        <h1 class="logo-font">Armory</h1>
-        <p>A place for tribals to share knowledge.</p>
+        <h1 class="logo-font">Conduit</h1>
+        <p>A place to share your knowledge.</p>
       </div>
     </div>
     <div class="container page">
