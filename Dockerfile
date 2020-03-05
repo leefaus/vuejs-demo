@@ -1,13 +1,12 @@
-FROM node:lts-alpine
-
+FROM node:lts-alpine as build-stage
 WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
-COPY . /app/
-
-RUN npm install -g editorconfig
-
-RUN yarn upgrade
-
-EXPOSE 8080
-
-ENTRYPOINT VUE_APP_API_URL=$API_URL yarn serve --inline --hot --host 0.0.0.0 --public
+# production stage
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
